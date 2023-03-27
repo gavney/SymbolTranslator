@@ -54,7 +54,7 @@ namespace SymbolTranslator
 
             pictureBox.Image = new Bitmap(image, new Size(122, 113));
 
-            labelRes.Text = image.Width.ToString() + "x" + image.Height.ToString();
+            labelRes.Text = image.Width.ToString() + "*" + image.Height.ToString();
         }
 
         private void saveFileDialog1_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
