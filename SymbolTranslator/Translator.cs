@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
+﻿using System.Drawing;
 namespace SymbolTranslator
 {
     internal class Translator
@@ -25,17 +18,6 @@ namespace SymbolTranslator
                 {
                     Color color = image.GetPixel(x, y);
                     double colorNum = 1 - (0.299 * color.R + 0.587 * color.G + 0.114 * color.B) / 255;
-
-                    if (colorNum > 0.9)
-                        result += pattern[0];
-                    else if (colorNum > 0.6)
-                        result += pattern[1];
-                    else if (colorNum > 0.4)
-                        result += pattern[2];
-                    else if (colorNum > 0.2)
-                        result += pattern[3];
-                    else
-                        result += pattern[4];
                 }
             }
             return result;
