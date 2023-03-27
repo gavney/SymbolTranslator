@@ -37,6 +37,10 @@ namespace SymbolTranslator
         public Bitmap translateOnPhoto(Bitmap image, Size size, string pattern)
         {
             Bitmap newImage = new Bitmap(size.Width*5, size.Height*8);
+            
+            using (var graphics = Graphics.FromImage(newImage))
+                graphics.Clear(Color.Black);
+
 
             string text = translate(image, size, pattern);
 
