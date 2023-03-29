@@ -3,10 +3,8 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using AnimatedGif;
-
 
 
 namespace SymbolTranslator
@@ -48,7 +46,7 @@ namespace SymbolTranslator
         }
 
         private void openFileDialog1_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
-        {
+        {        
             try
             {
                 extension = Path.GetExtension(openFileDialog.FileName);
@@ -67,6 +65,12 @@ namespace SymbolTranslator
 
         private void saveFileDialog1_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            if (saveFileDialog.FileName == openFileDialog.FileName)
+            {
+                MessageBox.Show("Same image");
+                return;
+            }
+
             int width = (int)numericUpDownX.Value;
             int height = (int)numericUpDownY.Value;
 
