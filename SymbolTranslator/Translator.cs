@@ -41,7 +41,6 @@ namespace SymbolTranslator
             using (var graphics = Graphics.FromImage(newImage))
                 graphics.Clear(Color.Black);
 
-
             string text = translate(image, size, pattern);
 
             Graphics graphImage = Graphics.FromImage(newImage);

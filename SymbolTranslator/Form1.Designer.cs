@@ -162,7 +162,6 @@
             resources.ApplyResources(this.checkBoxPicture, "checkBoxPicture");
             this.checkBoxPicture.Name = "checkBoxPicture";
             this.checkBoxPicture.UseVisualStyleBackColor = true;
-            this.checkBoxPicture.CheckedChanged += new System.EventHandler(this.checkBoxPicture_CheckedChanged);
             // 
             // progressBar1
             // 

@@ -33,28 +33,36 @@ namespace SymbolTranslator
         {
             if ((image != null) & (textBoxPattern.Text.Length == 5))
             {
+                if (checkBoxPicture.Checked)
+                {
+                    saveFileDialog.Filter = "Изображения (*.jpg; *.png, *.gif)|*.jpg; *.png; *.gif; |All files(*.*)|*.*";
+                    saveFileDialog.FileName = extension == ".gif" ? "symbol.gif" : "symbol.jpg";
+                }
+                else
+                {
+                    saveFileDialog.Filter = "Text files(*.txt)|*.txt|All files(*.*)|*.*";
+                    saveFileDialog.FileName = "symbol.txt";
+                }
                 saveFileDialog.ShowDialog();            
             }
         }
 
-        private void checkBoxPicture_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBoxPicture.Checked)
-                saveFileDialog.Filter = "Изображения (*.jpg; *.png, *.gif)|*.jpg; *.png; *.gif; |All files(*.*)|*.*";
-
-            else
-                saveFileDialog.Filter = "Text files(*.txt)|*.txt|All files(*.*)|*.*";
-        }
-
         private void openFileDialog1_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            extension = Path.GetExtension(openFileDialog.FileName);
+            try
+            {
+                extension = Path.GetExtension(openFileDialog.FileName);
 
-            image = new Bitmap(openFileDialog.FileName);
+                image = new Bitmap(openFileDialog.FileName);
 
-            pictureBox.Image = new Bitmap(image, new Size(122, 113));
+                pictureBox.Image = new Bitmap(image, new Size(122, 113));
 
-            labelRes.Text = image.Width.ToString() + "x" + image.Height.ToString();
+                labelRes.Text = image.Width.ToString() + "x" + image.Height.ToString();
+            }
+            catch (ArgumentException)
+            {
+                MessageBox.Show("Bad image");
+            }
         }
 
         private void saveFileDialog1_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
